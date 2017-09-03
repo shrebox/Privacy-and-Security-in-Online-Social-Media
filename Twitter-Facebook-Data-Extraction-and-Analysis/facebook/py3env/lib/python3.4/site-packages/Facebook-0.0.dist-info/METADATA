@@ -1,0 +1,33 @@
+Metadata-Version: 2.0
+Name: Facebook
+Version: 0.0
+Summary: Facebook API client
+Home-page: http://github.com/jgorset/facebook
+Author: Johannes Gorset
+Author-email: jgorset@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+
+Facebook
+========
+
+About
+-----
+
+Facebook API client for Python.
+
+Installation
+------------
+
+    $ pip install facebook
+
+
+History
+-------
+
+0.0.0
++++++
+
+* Nothing
+
+

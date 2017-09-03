@@ -1,0 +1,1 @@
+{"extensions": {"python.details": {"contacts": [{"email": "jgorset@gmail.com", "name": "Johannes Gorset", "role": "author"}], "document_names": {"description": "DESCRIPTION.rst"}, "project_urls": {"Home": "http://github.com/jgorset/facebook"}}}, "generator": "bdist_wheel (0.29.0)", "metadata_version": "2.0", "name": "Facebook", "summary": "Facebook API client", "version": "0.0"}

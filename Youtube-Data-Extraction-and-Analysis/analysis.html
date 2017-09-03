@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart','bar']});
+
+      google.charts.setOnLoadCallback(drawSarahChart);
+
+       google.charts.setOnLoadCallback(likevsdislikebarChart);
+
+       google.charts.setOnLoadCallback(stackChart);
+
+       google.charts.setOnLoadCallback(pieChart);
+
+       function pieChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Channel', 'Subscribers'],
+          ['Machinima',     12605719],
+          ['CollegeHumor',      11942492],
+          ['TEDx Talks',  8471302],
+          ['TED', 7644081],
+          ['ExplosmEntertainment',    7440513]
+        ]);
+
+        var options = {
+          title: 'Top 5 Channels and subscribers',
+           is3D: true,
+          };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+       function stackChart(){
+
+        var data = google.visualization.arrayToDataTable([
+        ['Genre', 'Like', 'Dislike', 'Views',{ role: 'annotation' } ],
+        ['This is what happens when you reply to spam email | James Veitch', 33875,8328,9663,''],
+          ['Addiction', 33215,4451,19053,''],
+          ['My philosophy for a happy life | Sam Berns | TEDxMidAtlantic', 32472,6655,33959,''], 
+          ['Why people believe they can\'t draw - and how to prove they can | Graham Shaw | TEDxHull', 25574,9623,13478,''],
+          ['Inside the mind of a master procrastinator | Tim Urban', 24846,2230,14833,'']
+      ]);
+
+         var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2,{ calc: "stringify",
+                         sourceColumn: 2,
+                         type: "string",
+                         role: "annotation" },
+                         3,{ calc: "stringify",
+                         sourceColumn: 3,
+                         type: "string",
+                         role: "annotation" }
+                         ]);
+
+      var options = {
+        title: 'Top 5 videos: Like, Dislike and Comments (Likes are scaled down by factor of 10)',
+         isStacked: 'percent',
+          height: 500,
+          legend: {position: 'top', maxLines: 3},
+          vAxis: {
+            minValue: 0,
+            ticks: [0, .3, .6, .9, 1]
+          }
+      };
+
+         var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+
+       }
+
+       function likevsdislikebarChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Video', 'Likes', 'Dislikes','Views'],
+          ['This is what happens when you reply to spam email | James Veitch', 338759,8328,140703],
+          ['Addiction', 332158,4451,137049],
+          ['My philosophy for a happy life | Sam Berns | TEDxMidAtlantic', 324725,6655,244713], 
+          ['Why people believe they can\'t draw - and how to prove they can | Graham Shaw | TEDxHull', 255749,9623,154055],
+          ['Inside the mind of a master procrastinator | Tim Urban', 248464,2230,81096]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Video Popularity',
+            subtitle: 'Likes, Dislikes and Views (Views have been scaled down by factor of 100)',
+          
+          },
+          bars: 'horizontal' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+
+      // Callback that draws the pie chart for Sarah's pizza.
+      function drawSarahChart() {
+
+        // Create the data table for Sarah's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Videos');
+        data.addColumn('number', 'Likes');
+        data.addRows([
+          ['Meet Spot, the robot dog that can run, hop and open doors | Marc Raibert', 1779],
+          ['Why I still have hope for coral reefs | Kristen Marhaver', 936],
+          ['Thoughts on humanity, fame and love | Shah Rukh Khan', 85558],
+          ['How to gain control of your free time | Laura Vanderkam', 34266],
+          ['Your brain hallucinates your conscious reality | Anil Seth', 19752]
+        ]);
+
+        // Set options for Sarah's pie chart.
+        var options = {title:'Top 5 videos(based on search) and its\'s likes',
+                       width:900,
+                       height:500};
+
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.BarChart(document.getElementById('Sarah_chart_div'));
+        chart.draw(data, options);
+      }
+
+    </script>
+  </head>
+  <body>
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+    <tr>
+      <H1 align="center">Youtube Data Analysis</H1>
+    </tr>
+     <tr>
+      <td><div id="barchart_material" style="width: 900px; height: 500px;"></div></td>
+      </tr>
+      <tr>
+      <td><div id="piechart" style="width: 900px; height: 500px;"></div></td>
+      </tr>
+       <tr>
+      <td><div id="columnchart_values" style="width: 900px; height: 500px;"></div></td>
+      </tr>
+       </tr>
+       <tr>
+        <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+
+    </table>
+  </body>
+</html>
