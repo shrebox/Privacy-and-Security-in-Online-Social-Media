@@ -1,1 +1,1 @@
-# Privacy-and-Security-in-Online-Social-Media
+# Privacy and Security in Online Social Media
